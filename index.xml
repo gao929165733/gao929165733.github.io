@@ -3,9 +3,14 @@
         <title>Welcome to chenGao&#39;s Blog</title>
         <link>https://gao929165733.github.io/</link>
         <description>关于 CodeIT 主题</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 01 Jan 2022 10:35:21 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 05 Apr 2022 10:30:05 &#43;0800</lastBuildDate>
             <atom:link href="https://gao929165733.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Ubuntu_server</title>
+    <link>https://gao929165733.github.io/ubuntu_server/</link>
+    <pubDate>Tue, 05 Apr 2022 10:30:05 &#43;0800</pubDate><dc:creator>chenGao</dc:creator><guid>https://gao929165733.github.io/ubuntu_server/</guid>
+    <description><![CDATA[Ubuntu server深度学习工作站环境搭建 1. 环境配置 ubuntu server 20.04 cuda 11.4 torch 1.9 miniconda-py3.7 2. 具体步骤 2.1 系统安装 准备工具 U盘一个 Ubuntu 20.04 LTS 镜像 启动盘制作工具Rufus 安装系统]]></description>
+</item><item>
     <title>元旦随笔</title>
     <link>https://gao929165733.github.io/%E5%85%83%E6%97%A6%E9%9A%8F%E7%AC%94/</link>
     <pubDate>Sat, 01 Jan 2022 10:35:21 &#43;0800</pubDate><dc:creator>chenGao</dc:creator><guid>https://gao929165733.github.io/%E5%85%83%E6%97%A6%E9%9A%8F%E7%AC%94/</guid>
