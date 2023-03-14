@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>更新Github &#43; Hugo博客 &#43; 博客部署迁移 - Welcome to chenGao&#39;s Blog</title><meta name="description" content="关于 CodeIT 主题"><meta property="og:title" content="更新Github &#43; Hugo博客 &#43; 博客部署迁移" />
+<meta property="og:description" content="更新Github &#43; Hugo博客 &#43; 博客部署迁移 记录一下更新博客内容的步骤，以及相关git命令的含义。 步 1. 创建新博客文件 进入博客所在目录 cd G:\MyBlog 创建" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gao929165733.github.io/second_post/" />
+<meta property="og:image" content="https://gao929165733.github.io/logo.png"/>
+<meta property="article:published_time" content="2021-10-25T21:18:45+08:00" />
+<meta property="article:modified_time" content="2021-10-25T21:18:45+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://gao929165733.github.io/logo.png"/>
+
+<meta name="twitter:title" content="更新Github &#43; Hugo博客 &#43; 博客部署迁移"/>
+<meta name="twitter:description" content="更新Github &#43; Hugo博客 &#43; 博客部署迁移 记录一下更新博客内容的步骤，以及相关git命令的含义。 步 1. 创建新博客文件 进入博客所在目录 cd G:\MyBlog 创建"/>
+<meta name="application-name" content="Welcome to chenGao&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Welcome to chenGao&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://gao929165733.github.io/second_post/" /><link rel="prev" href="https://gao929165733.github.io/first_post/" /><link rel="next" href="https://gao929165733.github.io/paper_1/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.623091c4f3b927646c79b3db3772f496ee423628b9567bc0c74af55a4d50d1ba.css" integrity="sha256-YjCRxPO5J2RsebPbN3L0lu5CNii5VnvAx0r1Wk1Q0bo="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "更新Github + Hugo博客 + 博客部署迁移",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/gao929165733.github.io\/second_post\/"
+        },"image": ["https:\/\/gao929165733.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "github hugo","wordcount":  1246 ,
+        "url": "https:\/\/gao929165733.github.io\/second_post\/","datePublished": "2021-10-25T21:18:45+08:00","dateModified": "2021-10-25T21:18:45+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/gao929165733.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "chenGao"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">('false' === 'true' && window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Welcome to chenGao&#39;s Blog"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span>chenGao&#39;s blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/sunt-programator/CodeIT" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/second_post/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Welcome to chenGao&#39;s Blog"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span>chenGao&#39;s blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/sunt-programator/CodeIT" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/second_post/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">更新Github &#43; Hugo博客 &#43; 博客部署迁移</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>chenGao</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/web/"><i class="far fa-folder fa-fw"></i>Web</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-25">2021-10-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1246 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/second_post/" class="leancloud_visitors" data-flag-title="更新Github &#43; Hugo博客 &#43; 博客部署迁移">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#步">步</a>
+      <ul>
+        <li><a href="#1-创建新博客文件">1. 创建新博客文件</a></li>
+        <li><a href="#2将博客内容上传至github">2.将博客内容上传至Github</a></li>
+        <li><a href="#3-将博客部署迁移到其他电脑">3. 将博客部署迁移到其他电脑</a></li>
+        <li><a href="#4一些坑和参考">4.一些坑和参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="更新github--hugo博客--博客部署迁移">更新Github + Hugo博客 + 博客部署迁移</h1>
+<p>记录一下更新博客内容的步骤，以及相关git命令的含义。</p>
+<h2 id="步">步</h2>
+<h3 id="1-创建新博客文件">1. 创建新博客文件</h3>
+<ul>
+<li>
+<p>进入博客所在目录</p>
+<p><code>cd G:\MyBlog</code></p>
+</li>
+<li>
+<p>创建一篇新的博客</p>
+<p><code>hugo new posts/bolg_name.md</code></p>
+<p>编写博客内容时，需要设置<code>draft:false</code>，否则博客的内容将会以草稿的形式保存，不会正式发布。</p>
+</li>
+</ul>
+<h3 id="2将博客内容上传至github">2.将博客内容上传至Github</h3>
+<ul>
+<li>
+<p>编译</p>
+<p><code>hugo</code></p>
+<p>该命令用于编译网站的内容，同时生成<code>public</code>文件夹，里面保存了静态网页所需要的所有内容，我们需要把<code>public</code>上传至我们第一步创建的Github仓库中，通过github.io发布博客。</p>
+</li>
+<li>
+<p>推送</p>
+<ol>
+<li>进入目录</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">cd public
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>初始化</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">git init
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>删除本地指定的远程地址</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">git remote rm origin
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>填写自己的域名</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">git remote add origin git@github.com:gao929165733/gao929165733.github.io
+</code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>添加当前目录下的所有文件到暂存区</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">git add .
+</code></pre></td></tr></table>
+</div>
+</div><ol start="6">
+<li>初将暂存区内容添加到本地仓库中</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">git commit -m &#34;hugo&#34;
+</code></pre></td></tr></table>
+</div>
+</div><ol start="7">
+<li>将本地的master分支推送到origin主机的master分支</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">git push -u origin master
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="3-将博客部署迁移到其他电脑">3. 将博客部署迁移到其他电脑</h3>
+<ul>
+<li>
+<p>环境安装（Hugo+Git）</p>
+</li>
+<li>
+<p>源代码复制和修改</p>
+<ul>
+<li>将博客源代码文件复制到需要配置的电脑</li>
+<li>删除主题的.git配置，如果你有多个主题文件夹的话，需要都删除。<code>rm -rf ./themes/next/.git/</code> 用这条命令来删除你对应主题文件夹里的.git 文件夹，注意 .git 是一个隐藏文件夹。</li>
+<li><code>.gitignore</code> 文件夹在 Hexo 的根目录下可能已经存在了，可以打开和该文中的忽略事项比对一下，如果一样，接着 <code>git init</code> 初始化 git 仓库就好；如果没有该 <code>.gitignore</code> 文件夹就新建一个添加相应忽略事项再 <code>git init</code> 初始化。</li>
+</ul>
+</li>
+<li>
+<p>git设置</p>
+<ul>
+<li>重新在git设置一下身份的名字和邮箱（最好跟之前的电脑一致）
+<ul>
+<li><code>git config --global user.name &quot;yourname&quot;</code></li>
+<li><code>git config --global user.email &quot;your@email.com&quot;</code></li>
+</ul>
+</li>
+<li>删除.ssh文件夹（直接搜索该文件夹）下所有文件(手动删除即可，不需要git）()，该文件在C盘用户目录下</li>
+<li>git输入命令生成密匙（一直回车即可）
+<ul>
+<li><code>ssh-keygen -t rsa -C &quot;your@email.com&quot;</code>（请填你设置的邮箱地址）</li>
+</ul>
+</li>
+<li>打开https://github.com/，登陆你的账户，进入设置&ndash;&gt;<strong>“SSH and GPG keys”</strong>&ndash;&gt;<strong>&ldquo;New SSH key&rdquo;</strong>，将C盘用户目录下.ssh文件夹中的**“id_rsa.pub”**中内容复制到**&ldquo;New SSH key&rdquo;**中</li>
+</ul>
+</li>
+<li>
+<p>开始写博客前，把远程私有仓库的最新博客源文件拉到本地</p>
+<ul>
+<li><strong><code>git pull</code></strong></li>
+<li><strong><code>git fetch --all</code></strong>   #将远程git仓库上最新的内容拉取到本地,将本地库所关联的远程库更新至最新</li>
+</ul>
+</li>
+<li>
+<p>重复第二步</p>
+</li>
+</ul>
+<h3 id="4一些坑和参考">4.一些坑和参考</h3>
+<ul>
+<li>
+<p><code>git remote add origin https://github.com/xxx/xxx.github.io #填写自己的域名</code></p>
+<p>该命令一直报错time out，替换为<code>git remote add origin git@github.com:xxx/xxx.github.io</code>即可</p>
+</li>
+<li>
+<p><code>git remote rm origin</code> # 删除本地指定的远程地址</p>
+</li>
+<li>
+<p><a href="https://hugoloveit.com/zh-cn/theme-documentation-basics/#26-%E6%9E%84%E5%BB%BA%E7%BD%91%E7%AB%99" target="_blank" rel="noopener noreferrer">loveIt主题</a></p>
+</li>
+<li>
+<p><a href="https://dongxu-zheng.github.io/zh-cn/01_hugo_building/" target="_blank" rel="noopener noreferrer">github+hugo配置教程</a></p>
+</li>
+<li>
+<p><a href="https://www.alankeene.com/2019/0102/hexo-perfect-synchronize.html" target="_blank" rel="noopener noreferrer">最安全的hexo多台电脑同步博客解决方案&ndash;非新建分支</a></p>
+</li>
+<li>
+<p><a href="https://blog.csdn.net/jingtingfengguo/article/details/51892864" target="_blank" rel="noopener noreferrer">git遇到的问题之“Please make sure you have the correct access rights and the repository exists.”</a></p>
+</li>
+<li>
+<p><a href="https://blog.csdn.net/qq_43705131/article/details/107965888" target="_blank" rel="noopener noreferrer">解决Please make sure you have the correct access rights and the repository exists 问题.</a></p>
+</li>
+<li>
+<p><a href="https://dongxu-zheng.github.io/zh-cn/01_hugo_building/" target="_blank" rel="noopener noreferrer">基于Hugo + Github Pages + Netlify搭建LoveIt主题个人博客</a></p>
+</li>
+<li>
+<p><a href="https://blog.csdn.net/ITxiaodong/article/details/51399333" target="_blank" rel="noopener noreferrer">GitHub报错master-&gt;master（fetch first)的解决方法</a></p>
+</li>
+</ul>
+<br>
+<font size="6">加油吧，骚年！</font>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-10-25</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/second_post/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://gao929165733.github.io/second_post/" data-title="更新Github &#43; Hugo博客 &#43; 博客部署迁移" data-hashtags="github hugo"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://gao929165733.github.io/second_post/" data-hashtag="github hugo"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://gao929165733.github.io/second_post/" data-title="更新Github &#43; Hugo博客 &#43; 博客部署迁移"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://gao929165733.github.io/second_post/" data-title="更新Github &#43; Hugo博客 &#43; 博客部署迁移"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://gao929165733.github.io/second_post/" data-title="更新Github &#43; Hugo博客 &#43; 博客部署迁移"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/github-hugo/">github hugo</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/first_post/" class="prev" rel="prev" title="Hello，Hugo 个人博客"><i class="fas fa-angle-left fa-fw"></i>Hello，Hugo 个人博客</a>
+            <a href="/paper_1/" class="next" rel="next" title="[21_paper_1] TPLinker: Single-stage Joint Extraction of Entities and Relations Through Token Pair Linking">[21_paper_1] TPLinker: Single-stage Joint Extraction of Entities and Relations Through Token Pair Linking<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.79.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">chenGao&#39;s Blog</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.47a1ff73dc443ed4a9f13e3134f6058e8c6d21248b35d03e7d64f56345190c3e.js" integrity="sha256-R6H/c9xEPtSp8T4xNPYFjoxtISSLNdA&#43;fWT1Y0UZDD4="></script></body>
+</html>

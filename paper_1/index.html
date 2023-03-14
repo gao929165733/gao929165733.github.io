@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>[21_paper_1] TPLinker: Single-stage Joint Extraction of Entities and Relations Through Token Pair Linking - Welcome to chenGao&#39;s Blog</title><meta name="description" content="关于 CodeIT 主题"><meta property="og:title" content="[21_paper_1] TPLinker: Single-stage Joint Extraction of Entities and Relations Through Token Pair Linking" />
+<meta property="og:description" content="paper code 1. 主要贡献和结论 TPLinker将抽取标注框架统一为字符对链接问题，即Token Pair Linking problem 解决三元组重叠问题和暴露偏差（指在训练阶段是gol" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gao929165733.github.io/paper_1/" />
+<meta property="og:image" content="https://gao929165733.github.io/logo.png"/>
+<meta property="article:published_time" content="2021-11-10T22:04:52+08:00" />
+<meta property="article:modified_time" content="2021-11-10T22:04:52+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://gao929165733.github.io/logo.png"/>
+
+<meta name="twitter:title" content="[21_paper_1] TPLinker: Single-stage Joint Extraction of Entities and Relations Through Token Pair Linking"/>
+<meta name="twitter:description" content="paper code 1. 主要贡献和结论 TPLinker将抽取标注框架统一为字符对链接问题，即Token Pair Linking problem 解决三元组重叠问题和暴露偏差（指在训练阶段是gol"/>
+<meta name="application-name" content="Welcome to chenGao&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Welcome to chenGao&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://gao929165733.github.io/paper_1/" /><link rel="prev" href="https://gao929165733.github.io/second_post/" /><link rel="next" href="https://gao929165733.github.io/paper_2/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.623091c4f3b927646c79b3db3772f496ee423628b9567bc0c74af55a4d50d1ba.css" integrity="sha256-YjCRxPO5J2RsebPbN3L0lu5CNii5VnvAx0r1Wk1Q0bo="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[21_paper_1] TPLinker: Single-stage Joint Extraction of Entities and Relations Through Token Pair Linking",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/gao929165733.github.io\/paper_1\/"
+        },"image": ["https:\/\/gao929165733.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "实体关系抽取","wordcount":  2462 ,
+        "url": "https:\/\/gao929165733.github.io\/paper_1\/","datePublished": "2021-11-10T22:04:52+08:00","dateModified": "2021-11-10T22:04:52+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/gao929165733.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "chenGao"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">('false' === 'true' && window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Welcome to chenGao&#39;s Blog"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span>chenGao&#39;s blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/sunt-programator/CodeIT" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/paper_1/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Welcome to chenGao&#39;s Blog"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span>chenGao&#39;s blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/sunt-programator/CodeIT" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/paper_1/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">[21_paper_1] TPLinker: Single-stage Joint Extraction of Entities and Relations Through Token Pair Linking</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>chenGao</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%BA%E6%96%87/"><i class="far fa-folder fa-fw"></i>论文</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-10">2021-11-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2462 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/paper_1/" class="leancloud_visitors" data-flag-title="[21_paper_1] TPLinker: Single-stage Joint Extraction of Entities and Relations Through Token Pair Linking">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-主要贡献和结论">1. 主要贡献和结论</a></li>
+    <li><a href="#2-相关工作">2. 相关工作</a>
+      <ul>
+        <li><a href="#第1类多任务学习共享参数的联合抽取模型"><strong>第1类：多任务学习</strong>（共享参数的联合抽取模型）</a></li>
+        <li><a href="#第2类结构化预测联合解码的联合抽取模型"><strong>第2类：结构化预测</strong>（联合解码的联合抽取模型）</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-具体内容">3. 具体内容</a>
+      <ul>
+        <li><a href="#31-tplinker的标注框架">3.1 TPLinker的标注框架</a></li>
+        <li><a href="#31-tplinker的解码过程">3.1 TPLinker的解码过程</a></li>
+        <li><a href="#32-实验结果">3.2 实验结果</a></li>
+      </ul>
+    </li>
+    <li><a href="#span-level-ner">span-level NER</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><a href="https://arxiv.org/pdf/2010.13415.pdf" target="_blank" rel="noopener noreferrer">paper</a></p>
+<p><a href="https://link.zhihu.com/?target=https%3A//github.com/131250208/TPlinker-joint-extraction" target="_blank" rel="noopener noreferrer">code</a></p>
+<h2 id="1-主要贡献和结论">1. 主要贡献和结论</h2>
+<ul>
+<li>TPLinker将抽取标注框架统一为<strong>字符对链接问题</strong>，即<strong>Token Pair Linking problem</strong></li>
+<li>解决三元组<strong>重叠问题</strong>和<strong>暴露偏差</strong>（指在训练阶段是gold实体输入进行关系预测，而在推断阶段是上一步的预测实体输入进行关系判断；导致训练和推断存在不一致）问题</li>
+<li>TPLinker是<strong>单阶段解码</strong>，训练和推断阶段抽取三元组不存在差异</li>
+</ul>
+<h2 id="2-相关工作">2. 相关工作</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/pic/1/21-paper-1.jpg"
+        data-srcset="/pic/1/21-paper-1.jpg, /pic/1/21-paper-1.jpg 1.5x, /pic/1/21-paper-1.jpg 2x"
+        data-sizes="auto"
+        alt="/pic/1/21-paper-1.jpg"
+        title="/pic/1/21-paper-1.jpg" /></p>
+<p>实体关系的joint抽取模型可分为2大类</p>
+<h3 id="第1类多任务学习共享参数的联合抽取模型"><strong>第1类：多任务学习</strong>（共享参数的联合抽取模型）</h3>
+<p>多任务学习机制中，实体和关系共享同一个网络编码，但本质上仍然是采取pipeline的解码方式（故仍然存在误差传播问题）。近年来的大部分joint都采取这种共享参数的模式，集中在魔改各种<strong>Tag框架</strong>和<strong>解码方式</strong>。</p>
+<ul>
+<li><strong>多头选择</strong>[<a href="https://www.sciencedirect.com/science/article/abs/pii/S095741741830455X?via%3Dihub" target="_blank" rel="noopener noreferrer">1]</a>：构建N×N×C 的关系分类器对每一个实体pair进行关系预测（N为序列长度，C为关系类别总数），输入的实体pair其实是每一个抽取实体的最后一个token。后续基于多头选择机制，也有paper引入预训练语言模型和bilinear分类。</li>
+<li><strong>层叠式指针标注</strong>[<a href="https://arxiv.org/pdf/1909.03227.pdf" target="_blank" rel="noopener noreferrer">2]</a>：将关系看作是SPO（Subject-Prediction-Object）抽取，先抽取主体Subject，然后对主体感知编码，最后通过层叠式的指针网络抽取关系及其对应的Object。</li>
+<li><strong>Span-level NER</strong>[<a href="https://arxiv.org/pdf/1909.07755.pdf" target="_blank" rel="noopener noreferrer">3]</a>：通过片段排列抽取实体，然后提取实体对进行关系分类。</li>
+</ul>
+<h3 id="第2类结构化预测联合解码的联合抽取模型"><strong>第2类：结构化预测</strong>（联合解码的联合抽取模型）</h3>
+<p>结构化预测则是一个全局优化问题，在推断的时候能够联合解码实体和关系（而不是像多任务学习那样，先抽取实体、再进行关系分类），只需要在一个阶段解码，解决暴露偏差。结构化预测的joint模型也有较多，比如<strong>统一的序列标注框架</strong>[<a href="https://zhuanlan.zhihu.com/p/274938894#ref_4" target="_blank" rel="noopener noreferrer">4]</a>、<strong>多轮QA+强化学习</strong>[<a href="https://zhuanlan.zhihu.com/p/274938894#ref_5" target="_blank" rel="noopener noreferrer">5]</a>等，不过有的联合解码方式通常很复杂。</p>
+<h2 id="3-具体内容">3. 具体内容</h2>
+<h3 id="31-tplinker的标注框架">3.1 TPLinker的标注框架</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/pic/1/21-paper-2.png"
+        data-srcset="/pic/1/21-paper-2.png, /pic/1/21-paper-2.png 1.5x, /pic/1/21-paper-2.png 2x"
+        data-sizes="auto"
+        alt="/pic/1/21-paper-2.png"
+        title="/pic/1/21-paper-2.png" /></p>
+<p>TPLinker通过链接(linking)3种类型的Span矩阵来实现，为方便起见，论文作者将3种标注方式画到一个图里了，如上图所示（记关系类别总数为R个）：</p>
+<ul>
+<li><strong>紫色标注</strong>：EH to ET，表示实体的头尾关系，是1个<strong>N*N</strong>矩阵；如两个实体：New York City:M(New, City) =1; De Blasio:M(De, Blasio) =1。</li>
+<li><strong>红色标注</strong>：SH to OH，表示subject和object的头部token间的关系，是R个<strong>N*N</strong>矩阵；如三元组(New York City, mayor,De Blasio):M(New, De)=1。</li>
+<li><strong>蓝色标注</strong>：ST to OT，表示subject和object的尾部token间的关系，是R个<strong>N*N</strong>矩阵；如三元组(New York City, mayor,De Blasio):M(City, Blasio)=1。</li>
+</ul>
+<p>因此，可以得到TPLinker共有<strong>2R+1</strong>个矩阵。值得注意的是：为防止稀疏计算，下三角矩阵不参与计算；虽然实体标注不会存在于下三角矩阵种，但关系标注是会存在的。为此，论文采取转换操作是：如果关系存在于下三角，则将其转置到上三角，并有“标记1”变为“标记2”。</p>
+<h3 id="31-tplinker的解码过程">3.1 TPLinker的解码过程</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/pic/1/21-paper-3.png"
+        data-srcset="/pic/1/21-paper-3.png, /pic/1/21-paper-3.png 1.5x, /pic/1/21-paper-3.png 2x"
+        data-sizes="auto"
+        alt="/pic/1/21-paper-3.png"
+        title="/pic/1/21-paper-3.png" /></p>
+<p>上图给出了一个完整的标注和编码示意图，标记有“0、1、2”三种。编码部分实际上是将原始的Span矩阵会展开为一个<strong>N*(N+1)/2</strong>序列进行编码(使用映射来记住原始矩阵中的位置)，也就是将token pair的每一个token编码拼接在一起。TPLinker的解码过程为：</p>
+<ul>
+<li>解码EH-to-ET可以得到句子中所有的实体，用实体头token idx作为key，实体作为value，存入字典D中，记为D={entity token idx：entity}；</li>
+<li>对每种关系r，解码ST-to-OT得到token对存入集合E中，解码SH-to-OH得到token对并在D中关联其token idx的实体value；</li>
+<li>对上一步中得到的SH-to-OH token对的所有实体value对，在集合E中依次查询是否其尾token对在E中，进而可以得到三元组信息。</li>
+</ul>
+<p>结合上图的具体case,我们具体描述一下解码过程：</p>
+<ul>
+<li>解码EH-to-ET中得到3个实体：{New York,New York City,De Blasio}; 字典D为：<code>{New:(New York,New York City),De:(De Blasio)}</code></li>
+</ul>
+<p>以关系“<strong>mayor</strong>”为例</p>
+<ul>
+<li>解码ST-to-OT得到集合E：{(City,Blasio)};解码SH-to-OH得到{(New,De)}，其在字典D中可关联的subject实体集合为{New York,New York City};object集合{De Blasio};</li>
+<li>遍历上述subject集合和object集合，并在集合E中查询尾token，发现只有一个实体三元组{New York City,mayor,De Blasio}</li>
+</ul>
+<p>以关系“<strong>born in</strong>”为例,</p>
+<ul>
+<li>
+<p>解码ST-to-OT得到集合E：{(Blasio,York),(Blasio,City)};解码SH-to-OH得到{(De,New)}，其在字典D中可关联的subject实体集合为{De Blasio};object集合为{New York,New York City};</p>
+</li>
+<li>
+<p>遍历上述subject集合和object集合，并在集合E中查询尾token，可得到2个实体三元组：{De Blasio,born in,New York}和{De Blasio,born in,New York City}</p>
+</li>
+</ul>
+<p>由于关系<strong>live in</strong>与<strong>born in</strong>一样，所以我们最终可得到5个三元组：</p>
+<ul>
+<li>(New York City, mayor, De Blasio), (De Blasio, born in, New York), (De Blasio, born in, New York City), (De Blasio, live in, New York), (De Blasio, live in, New York City)</li>
+</ul>
+<h3 id="32-实验结果">3.2 实验结果</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/pic/1/21-paper-4.png"
+        data-srcset="/pic/1/21-paper-4.png, /pic/1/21-paper-4.png 1.5x, /pic/1/21-paper-4.png 2x"
+        data-sizes="auto"
+        alt="/pic/1/21-paper-4.png"
+        title="/pic/1/21-paper-4.png" /></p>
+<p>如上图所示，TPLinker也超越了之前的一众SOTA。此外，TPLinker相较于之前的SOTA——CasRel，推断速度也快3.6倍。</p>
+<h2 id="span-level-ner">span-level NER</h2>
+<ul>
+<li><strong>定义：</strong>
+<ul>
+<li>span-level NER 是一种应对嵌套实体任务的方法，基于片段排列的方式，提取所有可能的片段排列，当某个片段排列是我们需要的正确排列作为正确实体，其他的作为负面实体，通过SoftMax对每一个Span进行实体类型判断，将原来的序列标注问题转化成分类问题。<figure>
+    <img src="/pic/span_ner.jpg"/> <figcaption>
+            <h4>基于片段排列的实体识别</h4>
+        </figcaption>
+</figure>
+</li>
+</ul>
+</li>
+<li><strong>思路：</strong>
+<ul>
+<li>整个算法为一个分类模型，对于含有n个token的文本，理论上存在n(n+1)/2种片段排列；如果文本过长，会产生大量的负样本，在实际中需要限制span长度并合理削减负样本。</li>
+</ul>
+</li>
+<li><strong>优化：</strong>
+<ul>
+<li>使用分词代替按字分割句子（中文），从而减少样本数量，并且可以增加样本的对抗性和合理性</li>
+<li>随机在负样本中选取一定量的样本</li>
+<li>拓展正面实体的边界获取对抗性较高的负样本</li>
+<li>限制实体的最大长度</li>
+</ul>
+</li>
+</ul>
+<h2 id="参考">参考</h2>
+<p>[1]Joint entity recognition and relation extraction as a multi-head selection problem</p>
+<p>[2]A Novel Cascade Binary Tagging Framework for Relational Triple Extraction</p>
+<p>[3]Span-based Joint Entity and Relation Extraction with Transformer Pre-training</p>
+<p>[4]Joint extraction of entities and relations based on a novel tagging scheme</p>
+<p>[5]Entity-Relation Extraction as Multi-Turn Question Answering</p>
+<p><a href="https://zhuanlan.zhihu.com/p/346897151" target="_blank" rel="noopener noreferrer">杰神知乎</a></p>
+<br>
+<font size="6">加油吧，骚年！</font>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-11-10</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/paper_1/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://gao929165733.github.io/paper_1/" data-title="[21_paper_1] TPLinker: Single-stage Joint Extraction of Entities and Relations Through Token Pair Linking" data-hashtags="实体关系抽取"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://gao929165733.github.io/paper_1/" data-hashtag="实体关系抽取"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://gao929165733.github.io/paper_1/" data-title="[21_paper_1] TPLinker: Single-stage Joint Extraction of Entities and Relations Through Token Pair Linking"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://gao929165733.github.io/paper_1/" data-title="[21_paper_1] TPLinker: Single-stage Joint Extraction of Entities and Relations Through Token Pair Linking"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://gao929165733.github.io/paper_1/" data-title="[21_paper_1] TPLinker: Single-stage Joint Extraction of Entities and Relations Through Token Pair Linking"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E5%AE%9E%E4%BD%93%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/">实体关系抽取</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/second_post/" class="prev" rel="prev" title="更新Github &#43; Hugo博客 &#43; 博客部署迁移"><i class="fas fa-angle-left fa-fw"></i>更新Github &#43; Hugo博客 &#43; 博客部署迁移</a>
+            <a href="/paper_2/" class="next" rel="next" title="[21_paper_2] Synchronous Dual Network with Cross-Type Attention for Joint Entity and Relation Extraction">[21_paper_2] Synchronous Dual Network with Cross-Type Attention for Joint Entity and Relation Extraction<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.79.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">chenGao&#39;s Blog</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.47a1ff73dc443ed4a9f13e3134f6058e8c6d21248b35d03e7d64f56345190c3e.js" integrity="sha256-R6H/c9xEPtSp8T4xNPYFjoxtISSLNdA&#43;fWT1Y0UZDD4="></script></body>
+</html>

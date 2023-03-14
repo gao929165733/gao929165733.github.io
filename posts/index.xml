@@ -1,0 +1,52 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+    <channel>
+        <title>所有文章 - Welcome to chenGao&#39;s Blog</title>
+        <link>https://gao929165733.github.io/posts/</link>
+        <description>所有文章 | Welcome to chenGao&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 14 Mar 2023 10:47:30 &#43;0800</lastBuildDate><atom:link href="https://gao929165733.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Hugo博客从一台电脑迁移到另外一台电脑（windows系统）</title>
+    <link>https://gao929165733.github.io/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB2.0windows%E7%B3%BB%E7%BB%9F/</link>
+    <pubDate>Tue, 14 Mar 2023 10:47:30 &#43;0800</pubDate><dc:creator>chenGao</dc:creator><guid>https://gao929165733.github.io/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB2.0windows%E7%B3%BB%E7%BB%9F/</guid>
+    <description><![CDATA[Hugo博客迁移部署2.0 问题描述 因为学习环境变化，更换了电脑，所以想把之前部署好的博客迁移到新电脑上，折腾了半天，在此记录一下，以免之后有]]></description>
+</item><item>
+    <title>Ubuntu_server显卡驱动自动更新解决</title>
+    <link>https://gao929165733.github.io/ubuntu%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%A7%A3%E5%86%B3/</link>
+    <pubDate>Tue, 14 Mar 2023 10:30:05 &#43;0800</pubDate><dc:creator>chenGao</dc:creator><guid>https://gao929165733.github.io/ubuntu%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%A7%A3%E5%86%B3/</guid>
+    <description><![CDATA[Ubuntu_server显卡驱动自动更新解决 1. 问题描述 系统更新了内核，导致之前配置好的显卡驱动更新，无法使用显卡，具体表现为： nvidia]]></description>
+</item><item>
+    <title>Ubuntu_server</title>
+    <link>https://gao929165733.github.io/ubuntu_server/</link>
+    <pubDate>Tue, 05 Apr 2022 10:30:05 &#43;0800</pubDate><dc:creator>chenGao</dc:creator><guid>https://gao929165733.github.io/ubuntu_server/</guid>
+    <description><![CDATA[Ubuntu server深度学习工作站环境搭建 1. 环境配置 ubuntu server 20.04 cuda 11.4 torch 1.9 miniconda-py3.7 2. 具体步骤 2.1 系统安装 准备工具 U盘一个 Ubuntu 20.04 LTS 镜像 启动盘制作工具Rufus 安装系统]]></description>
+</item><item>
+    <title>元旦随笔</title>
+    <link>https://gao929165733.github.io/%E5%85%83%E6%97%A6%E9%9A%8F%E7%AC%94/</link>
+    <pubDate>Sat, 01 Jan 2022 10:35:21 &#43;0800</pubDate><dc:creator>chenGao</dc:creator><guid>https://gao929165733.github.io/%E5%85%83%E6%97%A6%E9%9A%8F%E7%AC%94/</guid>
+    <description><![CDATA[元旦随笔 2021 2021年，是我硕士毕业的一年，也是我开始博士生生涯的一年。 这一年来，疫情依旧反反复复，告别了硕士好友，没有小伙伴一起去篮球场了，]]></description>
+</item><item>
+    <title>Transfomer理解笔记</title>
+    <link>https://gao929165733.github.io/transfomer/</link>
+    <pubDate>Wed, 22 Dec 2021 21:47:49 &#43;0800</pubDate><dc:creator>chenGao</dc:creator><guid>https://gao929165733.github.io/transfomer/</guid>
+    <description><![CDATA[Transfomer（Attention is all you need） 序列转入模型：给出一个序列，生成另外一个序列。（机器翻译）CNN、RNN、encod]]></description>
+</item><item>
+    <title>[21_paper_2] Synchronous Dual Network with Cross-Type Attention for Joint Entity and Relation Extraction</title>
+    <link>https://gao929165733.github.io/paper_2/</link>
+    <pubDate>Thu, 18 Nov 2021 18:22:33 &#43;0800</pubDate><dc:creator>chenGao</dc:creator><guid>https://gao929165733.github.io/paper_2/</guid>
+    <description><![CDATA[paper code 1. 主要贡献和结论 提出SDN，采用两个同构的双向注意力LSTM对实体类型增强表征和关系类型增强表征进行编码 通过SDN使用交叉注意力机制显示]]></description>
+</item><item>
+    <title>[21_paper_1] TPLinker: Single-stage Joint Extraction of Entities and Relations Through Token Pair Linking</title>
+    <link>https://gao929165733.github.io/paper_1/</link>
+    <pubDate>Wed, 10 Nov 2021 22:04:52 &#43;0800</pubDate><dc:creator>chenGao</dc:creator><guid>https://gao929165733.github.io/paper_1/</guid>
+    <description><![CDATA[paper code 1. 主要贡献和结论 TPLinker将抽取标注框架统一为字符对链接问题，即Token Pair Linking problem 解决三元组重叠问题和暴露偏差（指在训练阶段是gol]]></description>
+</item><item>
+    <title>更新Github &#43; Hugo博客 &#43; 博客部署迁移</title>
+    <link>https://gao929165733.github.io/second_post/</link>
+    <pubDate>Mon, 25 Oct 2021 21:18:45 &#43;0800</pubDate><dc:creator>chenGao</dc:creator><guid>https://gao929165733.github.io/second_post/</guid>
+    <description><![CDATA[更新Github + Hugo博客 + 博客部署迁移 记录一下更新博客内容的步骤，以及相关git命令的含义。 步 1. 创建新博客文件 进入博客所在目录 cd G:\MyBlog 创建]]></description>
+</item><item>
+    <title>Hello，Hugo 个人博客</title>
+    <link>https://gao929165733.github.io/first_post/</link>
+    <pubDate>Mon, 12 Jul 2021 16:35:45 &#43;0800</pubDate><dc:creator>chenGao</dc:creator><guid>https://gao929165733.github.io/first_post/</guid>
+    <description><![CDATA[第一篇博客 很久之前就想创建一个自己的博客，用来记录平时学习和生活的一些想法，起初是想用后端框架自己写一个，但是又觉得太麻烦。经过一番对比，发]]></description>
+</item></channel>
+</rss>
